@@ -13,9 +13,7 @@ output: pdf_document
 
 ## Research Motivation
 
-Our research question is: Is an individual’s fame related to his/her birth year?
-By examining movie ratings and number of votes as a proxy for fame, this study seeks to explore whether people born in certain time periods are more likely to achieve fame in the film industry
-
+Casting A-list actors is a strategic move to boost a film's visibility, financial success, and box office performance. Studies show that casting major stars, particularly Oscar winners, can significantly raise audience interest and market expectations, often increasing predicted box office revenues by millions. These actors not only influence box office results but also impact IMDb ratings, which shape consumer behavior, especially on streaming platforms. The research question, **"Does an actor influence IMDb popularity ratings of a movie?"**, can guide production and marketing strategies, underscoring the importance of star power in driving both film success and audience decisions.
 
 ## Data
 Data1 includes:
