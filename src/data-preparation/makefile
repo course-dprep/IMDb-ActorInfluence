@@ -7,10 +7,10 @@ all: $(OUTPUT)/data_exploration.html
 $(DATA)/data1.csv $(DATA)/data2.csv $(DATA)/data3.csv: download_data.R
 	R --vanilla < download_data.R
 
-$(DATA)/cdata1.csv $(DATA)/cdata2.csv $(DATA)/cdata3.csv: clean_data.R
+$(DATA)/cdata1.csv $(DATA)/cdata2.csv $(DATA)/cdata3.csv: $(DATA)/data1.csv $(DATA)/data2.csv $(DATA)/data3.csv clean_data.R
 	R --vanilla < clean_data.R
 
-$(TEMP)/data.csv: merge_data.R
+$(TEMP)/data.csv: $(DATA)/cdata1.csv $(DATA)/cdata2.csv $(DATA)/cdata3.csv merge_data.R
 	R -e "dir.create('../../gen/data-preparation/temp', recursive = TRUE)"
 	R --vanilla < merge_data.R
 	
