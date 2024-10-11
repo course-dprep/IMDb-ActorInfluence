@@ -13,6 +13,12 @@ data3 <- read_csv("../../data/data3.csv")
 # Load package
 library(tidyverse)
 
+if (exists("data1") & exists("data2") & exists("data3")) {
+  file.remove(c(file1, file2, file3))
+} else {
+  print("Files were not removed because original data was not successfully loaded.")
+}
+
 data1 <- na.omit(data1)
 data2 <- na.omit(data2)
 data3 <- na.omit(data3)
