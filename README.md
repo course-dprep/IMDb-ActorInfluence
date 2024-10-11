@@ -59,14 +59,12 @@ The results of the analyses performed in this research confirm...
    └── data-preparation
        ├── figures
        ├── .gitignore
-       ├── clean_dataR
+       ├── clean_data.R
        ├── data_exploration.R
        ├── data_exploration.Rmd
        ├── download_data.R
-       ├── filter.R
        ├── makefile
        ├── merge_data.R
-       ├── remove_variables.R
        └── render.R
    └── finalpdf
        ├── Final.Rmd
