@@ -57,7 +57,6 @@ The results of the analyses performed in this research confirm...
        ├── data_analysis.Rmd
        └── makefile
    └── data-preparation
-       ├── figures
        ├── .gitignore
        ├── clean_data.R
        ├── data_exploration.R
