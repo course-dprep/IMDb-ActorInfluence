@@ -28,13 +28,13 @@ NumVotes (Popularity Measure): The number of votes a movie receives (numVotes) c
 |---------------------|:-------------------------------------------------------
 | tconst              | Unique title identifier         
 | averagRating        | Weighted average rating of all individual user ratings
-| numVotes            | NUmber of votes a title has received 
+| numVotes            | Number of votes a title has received 
 | primaryTitle        | Unique title identifier         
-| startYear           | Weighted average rating of all individual user ratings
-| genre               | Number of votes a title has received 
-| primaryName         | Unique title identifier         
-| primaryProfession   | Weighted average rating of all individual user ratings
-| actorExperience     | Number of movies an actor has been in
+| startYear           | Release year of the title
+| genre               | Genre associated with the title 
+| primaryName         | Name by which person is most often credited       
+| primaryProfession   | Profession by which person is most often credited
+| actorExperience     | Experience of the actor/actress
 
 
 ## Results
@@ -45,13 +45,10 @@ The results of the analyses performed in this research confirm...
 ├── data
    └── .gitignore
 ├── gen
-   ├── data-analysis/output
-   └── data-preparation/output
-   └── final_report/output
    └──.gitignore
 ├── src
    ├── analysis
-       ├── analyse.R
+       ├── analyze.R
        ├── data_analysis.Rmd
        └── makefile
    └── data-preparation
