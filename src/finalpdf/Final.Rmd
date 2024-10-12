@@ -48,17 +48,17 @@ Data3 includes:
 - runtimeMinutes – primary runtime of the title, in minutes
 - genres (string array) – includes up to three genres associated with the title
 
-```{r include=FALSE}
+```{r echo=FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = TRUE)
 ```
 
-```{r include=FALSE}
+```{r echo=FALSE}
 # Load packages
 library(stringr)
 library(tidyverse)
 ```
 
-```{r include=FALSE}
+```{r echo=FALSE}
 # Importing the dataset 
 data <- read_csv("../../data/data.csv")
 ```
@@ -66,7 +66,7 @@ data <- read_csv("../../data/data.csv")
 #Data Exploration
 1. Table: Top 10 Actors by Number of Known Titles
 This table displays the top 10 actors with the highest number of known titles in the dataset. By analyzing the most prolific actors, we can gain insight into which individuals have had extensive careers and whether their volume of work correlates with other factors, such as IMDb ratings or votes. Understanding which actors dominate the dataset in terms of movie credits helps frame further exploration of the relationship between star power and a film's success.
-```{r}
+```{r echo=FALSE}
 #Top 10 Actors by Number of Known Titles
 # Count the number of known titles for each actor
 library(dplyr)
@@ -83,7 +83,7 @@ top_actors
 ```
 2. Bar Chart: Top 10 Actors with the Most Titles
 The bar chart visualizes the top 10 actors with the most known titles, providing a comparative view of their careers. Presenting this data graphically makes it easier to compare the number of titles and quickly spot outliers. This visualization is important for identifying whether actors with higher visibility—based on the sheer number of movie credits—tend to influence box office success or audience engagement more significantly.
-```{r}
+```{r echo=FALSE}
 # Bar chart of top 10 actors with the most titles
 library(ggplot2)
 ggplot(top_actors, aes(x = reorder(primaryName, -numTitles), y = numTitles)) +
@@ -94,7 +94,7 @@ ggplot(top_actors, aes(x = reorder(primaryName, -numTitles), y = numTitles)) +
 ```
 3. Histogram: IMDb Ratings Distribution
 This histogram illustrates the distribution of IMDb ratings for all movies in the dataset, showing how ratings are spread across various films. This analysis is essential for understanding overall rating trends and user perceptions. It helps us observe whether movie ratings cluster around certain values (e.g., high or low ratings) and can indicate broader audience reception patterns. By understanding the distribution, we can also identify whether there is a bias in how users rate movies.
-```{r}
+```{r echo=FALSE}
 #IMDb Ratings Distribution
 
 # Create a histogram of IMDb ratings
@@ -106,7 +106,7 @@ ggplot(data, aes(x = averageRating)) +
 ```
 4. Scatter Plot: Number of Votes vs. Average Rating
 The scatter plot investigates the relationship between the number of votes a movie has received and its average IMDb rating. This visualization is crucial for identifying potential correlations between a movie’s popularity (in terms of votes) and its overall rating. It helps us explore whether more popular movies (those with more votes) are rated higher or whether large vote counts tend to normalize or dilute a movie’s rating. This analysis is essential for understanding the impact of audience engagement on film ratings.
-```{r}
+```{r echo=FALSE}
 # Scatter plot of number of votes vs average rating
 ggplot(data, aes(x = numVotes, y = averageRating)) +
   geom_point(alpha = 0.5, color = "red") +
@@ -116,7 +116,7 @@ ggplot(data, aes(x = numVotes, y = averageRating)) +
 ```
 5. Table: Top 10 Highest Rated Movies
 This table lists the top 10 highest-rated movies based on IMDb ratings. Analyzing the highest-rated films allows us to explore common characteristics, such as genre, cast, or runtime, that may contribute to their high ratings. This information provides valuable insights into what factors drive critical success and can inform decisions on casting, production, and marketing strategies to replicate similar success in future projects.
-```{r}
+```{r echo=FALSE}
 # Distribution of IMDb Ratings by Actor
 top_movies <- data %>%
   group_by(tconst) %>%
@@ -129,13 +129,13 @@ top_movies
 ```
 
 ## Initial Analyses
-```{r}
+```{r echo=FALSE}
 library(dplyr)
 ```
 
 
 Create control variable actorExperience: the number of movies an actor has been involved in
-```{r}
+```{r echo=FALSE}
 data <- data %>%
   group_by(primaryName) %>%
   mutate(actorExperience = n()) %>%
@@ -144,29 +144,29 @@ data <- data %>%
 
 As R is running out of memory while trying to handle a large computation, likely due to the size and structure of our dataset we made a few changes.
 Only include actors with at least 10 movies:
-```{r}
+```{r echo=FALSE}
 data_filtered <- data %>%
   filter(actorExperience >= 10)
 ```
 Only include movies with at least 100 number of votes:
-```{r}
+```{r echo=FALSE}
 data_filtered <- data_filtered %>%
   filter(numVotes >= 50000)
 ```
 Keep the top 5 genres, lump the other genres into 'other'. 
-```{r}
+```{r echo=FALSE}
 #install.packages("forcats")
 library(forcats)
 data_filtered$genre <- fct_lump(data_filtered$genre, n = 5)
 ```
 We reduced the magnitude of the startYear variable by grouping it into 10-year intervals (decades)
-```{r}
+```{r echo=FALSE}
 data_filtered$startYear <- as.numeric(data_filtered$startYear)
 data_filtered$startYear_decade <- (data_filtered$startYear %/% 10) * 10
 ```
 
 Prepare dummy variables for genre, primaryName and startYear. We also drop all the rows that are missing the average Rating.
-```{r}
+```{r echo=FALSE}
 data_filtered <- data_filtered %>%
   mutate(genre = factor(genre), primaryName = factor(primaryName), startYear_decade = factor(startYear_decade)) %>%
   tidyr::drop_na(averageRating)
@@ -183,7 +183,11 @@ Independent variables:
 - startYear_decade (the year the movie was made)
 
 
-```{r}
+```{r echo=FALSE}
 summary(lm(averageRating ~ actorExperience + numVotes + genre + startYear_decade, data = data_filtered))
 ```
+Based on our regression analysis, we conclude that an actor's experience does have a statistically significant impact on IMDb ratings, though the effect is relatively small. For each additional film an actor appears in, the movie’s rating increases by approximately 0.00183 (p-value = 0.00307), suggesting that more experienced actors contribute to higher ratings, but only modestly.
 
+The number of votes (popularity) has a much larger effect, with a coefficient of 1.497e-06, highlighting the importance of audience engagement. Additionally, movie genres and the decade of release significantly influence ratings, with comedies, dramas, and more recent films generally rated higher.
+
+In conclusion, while actor experience plays a role, factors like popularity and genre are much stronger predictors of a movie’s IMDb rating. Focusing on these broader elements, alongside casting, can lead to better success.
