@@ -29,11 +29,9 @@ NumVotes (Popularity Measure): The number of votes a movie receives (numVotes) c
 | tconst              | Unique title identifier         
 | averagRating        | Weighted average rating of all individual user ratings
 | numVotes            | NUmber of votes a title has received 
-| l.x                 | ???  
 | primaryTitle        | Unique title identifier         
 | startYear           | Weighted average rating of all individual user ratings
 | genre               | Number of votes a title has received 
-| l.y                 | ???  
 | primaryName         | Unique title identifier         
 | primaryProfession   | Weighted average rating of all individual user ratings
 | actorExperience     | Number of movies an actor has been in
