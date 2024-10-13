@@ -34,7 +34,7 @@ NumVotes (Popularity Measure): The number of votes a movie receives (numVotes) c
 | genre               | Genre associated with the title 
 | primaryName         | Name by which person is most often credited       
 | primaryProfession   | Profession by which person is most often credited
-| actorExperience     | Experience of the actor/actress
+| actorExperience     | Number of movies an actor has been in
 
 
 ## Results
