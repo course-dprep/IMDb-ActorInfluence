@@ -102,9 +102,9 @@ To run the code, follow these instructions:
 1. Fork this repository
 2. Open your command line/terminal and run the following code:
 ```
-git clone https://github.com/course-dprep/MovieGenre_IMDbAnalysis
+git clone https://github.com/course-dprep/IMDb-ActorInfluence
 ```
-3. Set your working directory to `MovieGenreIMDbAnalysis` and run the following command:
+3. Set your working directory to `IMDb-ActorInfluence` and run the following command:
 ```
 make
 ```
