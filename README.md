@@ -44,6 +44,9 @@ On the other hand, the number of votes (popularity) has a much larger effect, wi
 
 In summary, although actor experience contributes to IMDb ratings, factors like popularity and genre are much stronger predictors of a movie’s success. Therefore, focusing on these broader aspects in addition to casting may lead to better outcomes.
 
+<img width="507" alt="Scherm­afbeelding 2024-10-13 om 15 50 09" src="https://github.com/user-attachments/assets/ff1b58e0-aa1f-478b-bb33-cf16f32b7d0d">
+
+
 ## Repository Overview
 ```
 ├── data
