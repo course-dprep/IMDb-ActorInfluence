@@ -38,7 +38,11 @@ NumVotes (Popularity Measure): The number of votes a movie receives (numVotes) c
 
 
 ## Results
-The results of the analyses performed in this research confirm...
+Our nalysis inidcate that an actor's experience has a statistically significant impact on IMDb ratings, although the effect is relatively small. Specifically, for each additional film an actor participates in, the movie’s rating increases by approximately 0.00183 (p-value = 0.00307). This suggests that while more experienced actors contribute to higher ratings, the effect is modest.
+
+On the other hand, the number of votes (popularity) has a much larger effect, with a coefficient of 1.497e-06, emphasizing the importance of audience engagement. Moreover, both movie genres and the decade of release significantly influence ratings, with comedies, dramas, and more recent films generally receiving higher ratings.
+
+In summary, although actor experience contributes to IMDb ratings, factors like popularity and genre are much stronger predictors of a movie’s success. Therefore, focusing on these broader aspects in addition to casting may lead to better outcomes.
 
 ## Repository Overview
 ```
